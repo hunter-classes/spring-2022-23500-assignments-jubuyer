@@ -1,10 +1,10 @@
 * Spring 2022 235 Assignments
 
-* Last name:
+* Last name: Ahmed
 
-* First name:
+* First name: Jubayer
 
-* GitHub username:
+* GitHub username: jubuyer
 
 * Notes:
 
