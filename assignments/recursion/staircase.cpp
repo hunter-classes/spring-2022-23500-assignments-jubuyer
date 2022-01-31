@@ -11,15 +11,18 @@ int stepPerms(int n) {
 	// } else {
 	// 	return stepPerms(n-1) + stepPerms(n-2) + stepPerms(n-3);
 	// }
+
+	//-------- After understanding base cases---------------
 	//base case, when there is one step, there is one way 
 	//to climb the stair case
 	if(n == 1) {
 		return 1;
-	} else if (n == 2) {
+	} else if (n == 2) { 
 		return 1 + stepPerms(n-1);
 	} else if (n == 3) {
 		return 2 + stepPerms(n-1);
 	} else {
+		//how to find all ways to climb if there are more than 3 steps
 		return stepPerms(n-3) + stepPerms(n-2) + stepPerms(n-1);
 	}
 }
