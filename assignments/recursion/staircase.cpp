@@ -34,5 +34,6 @@ int main(int argc, char const *argv[])
 	std::cout << "height: 3 -> " << stepPerms(3) << "\n";
 	std::cout << "height: 5 -> " << stepPerms(5) << "\n";
 	std::cout << "height: 7 -> " << stepPerms(7) << "\n";
+	std::cout << "height: 21 -> " << stepPerms(21) << "\n";
 	return 0;
 }
