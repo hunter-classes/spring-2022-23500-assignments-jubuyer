@@ -24,17 +24,17 @@ Dynamic Programming
   - Have an array to store the fib numbers that havent been calculated, and if it has, simply call it -> as fast as iterative version
   - Example: 
   ```
-  int fibtable[10000];
+    int fibtable[10000];
     int fib_dyn(int n){
 
-  if (n < 2){
-    return 1;
-  } else if (fibtable[n] != 0){
-    return fibtable[n];
-  } else {
-    int tmp = fib_dyn(n-1) + fib_dyn(n-2);
-    fibtable[n]=tmp;
-    return tmp;
-  }
-}
+      if (n < 2){
+        return 1;
+      } else if (fibtable[n] != 0){
+          return fibtable[n];
+      } else {
+          int tmp = fib_dyn(n-1) + fib_dyn(n-2);
+          fibtable[n]=tmp;
+          return tmp;
+      }
+    }
 ```
