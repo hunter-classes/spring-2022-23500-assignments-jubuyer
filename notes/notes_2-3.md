@@ -24,9 +24,8 @@ Dynamic Programming
   - Have an array to store the fib numbers that havent been calculated, and if it has, simply call it -> as fast as iterative version
   - Example: 
   ```
-
-int fibtable[10000];
-int fib_dyn(int n){
+  int fibtable[10000];
+    int fib_dyn(int n){
 
   if (n < 2){
     return 1;
