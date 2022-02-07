@@ -55,14 +55,18 @@ int main(int argc, char const *argv[])
 	// std::cout << "height: 31 -> " << stepPerms(31) << "\n"; //begins to slow
 	// std::cout << "height: 41 -> " << stepPerms(41) << "\n"; //slow
 
-	std::cout << "height: 1 -> " << memo_stepPerms(1) << "\n";
-	std::cout << "height: 2 -> " << memo_stepPerms(2) << "\n";
-	std::cout << "height: 3 -> " << memo_stepPerms(3) << "\n";
-	std::cout << "height: 5 -> " << memo_stepPerms(5) << "\n";
-	std::cout << "height: 7 -> " << memo_stepPerms(7) << "\n";
-	std::cout << "height: 21 -> " << memo_stepPerms(21) << "\n"; //still ok
-	std::cout << "height: 31 -> " << memo_stepPerms(31) << "\n"; //begins to slow
-	std::cout << "height: 41 -> " << memo_stepPerms(41) << "\n"; //slow
+	// std::cout << "height: 1 -> " << memo_stepPerms(1) << "\n";
+	// std::cout << "height: 2 -> " << memo_stepPerms(2) << "\n";
+	// std::cout << "height: 3 -> " << memo_stepPerms(3) << "\n";
+	// std::cout << "height: 5 -> " << memo_stepPerms(5) << "\n";
+	// std::cout << "height: 7 -> " << memo_stepPerms(7) << "\n";
+	// std::cout << "height: 21 -> " << memo_stepPerms(21) << "\n"; //still ok
+	// std::cout << "height: 31 -> " << memo_stepPerms(31) << "\n"; //begins to slow
+	// std::cout << "height: 41 -> " << memo_stepPerms(41) << "\n"; //slow
+
+	for(int i = 1; i < 56; i++) {
+		std::cout << i << ": " << memo_stepPerms(i) << "\n";
+	}
 
 	return 0;
 }
