@@ -8,14 +8,14 @@ Solving mazes:
 - e.g.
 ``` 
 |--------------------------------------------------------------|
-|	 														   |
-|	 														   |
-|	 														   |
-|	 		|-----|											   |
-|	 		|	  | <- stuck following this object			   |
-|	 		|-----|											   |
-|	 														   |
-|	 														   |
+|	 					               |
+|	 					               |
+|	 					               |
+|	 |-----|		                               |
+|	 |     | <- stuck following this object	               |
+|	 |-----|		                               |
+|	 					               |
+|	 					               |
 |--------------------------------------------------------------|
 ```
 
@@ -31,3 +31,4 @@ How can we represent this?
 - Transition -> modify the array
 
 Using recursion to solve:
+- Follow paths and when it hits a "dead end", come back down and solve next possibility
