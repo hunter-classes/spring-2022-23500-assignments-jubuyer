@@ -26,9 +26,15 @@ State Spaces:
   - When other moves exist, new states are made (for each direction)
   - Final solution is the accepted state
 
+![state spaces](https://cdn.discordapp.com/attachments/904541827321974785/940270038114521189/unknown.png)
+
 How can we represent this?
 - State -> 2D array of char
 - Transition -> modify the array
 
 Using recursion to solve:
 - Follow paths and when it hits a "dead end", come back down and solve next possibility
+
+---
+#### Maze I solved during class
+![maze i solved during class](https://user-images.githubusercontent.com/66185881/152822264-3a744dca-7c86-4f9b-a501-1daaa7cc696e.png)
