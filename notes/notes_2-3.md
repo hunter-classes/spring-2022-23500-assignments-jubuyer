@@ -23,7 +23,7 @@ Dynamic Programming
 - Fibonacci example
   - Have an array to store the fib numbers that havent been calculated, and if it has, simply call it -> as fast as iterative version
   - Example: 
-  ```
+  ```c++
     int fibtable[10000];
     int fib_dyn(int n){
 
