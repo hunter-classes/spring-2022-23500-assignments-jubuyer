@@ -34,7 +34,7 @@ How can we represent this?
 
 Using recursion to solve:
 - Follow paths and when it hits a "dead end", come back down and solve next possibility
-1. Global char variables -> `char me = 'Z'`, `char goal = '$'`, `char wall = '#'` 
+1. Global char variables -> `char me = 'Z'`, `char goal = '$'`, `char wall = ' '` 
 2. Input maze data from file into array (of strings)
 3. Creating the solve algorithm
 
