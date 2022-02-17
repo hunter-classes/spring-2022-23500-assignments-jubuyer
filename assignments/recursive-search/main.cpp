@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <vector>
 #include <unistd.h>
 #include <fstream>
 
@@ -8,6 +9,15 @@ char wall = '#';
 char cell = '.';
 char visited=',';
 int counter = 1;
+
+std::vector<std::vector<int>> solution{
+    {0, 0, 0, 0, 0},
+    {0, 0, 0, 0, 0},
+    {0, 0, 0, 0, 0},
+    {0, 0, 0, 0, 0},
+    {0, 0, 0, 0, 0}
+  };
+
 
 int load_board(std::string filename, std::string *board){
   std::ifstream infile(filename);
@@ -25,48 +35,68 @@ void print_board(std::string board[],int lines){
   }
 }
 
-void solve(std::string board[], int lines, int row, int col, int cells, bool &solved){
-  if (counter==(cells-1)){
+void print_solution() {
+  for(int i = 0; i < solution.size(); i++) {
+    for(int j = 0; j < solution[i].size(); j++) {
+      if(solution[i][j] < 10) {
+        std::cout << "0" << solution[i][j] << ":";
+      } else {
+        std::cout << solution[i][j] << ":";
+      }
+    }
+    std::cout << '\n';
+  }
+}
+
+void solve(std::string board[], int lines, int row, int col, int goal, bool &solved){
+  if(counter == goal+1) {
     solved = true;
     return;
   }
-  if (board[row][col]==wall ||
-      board[row][col]==knight ||
-      board[row][col]==visited){
+
+  if(board[row][col] == wall ||
+     board[row][col] == visited ||
+     board[row][col] == knight) {
     return;
   }
 
-  board[row][col]=knight;
-  counter++;
+  // std::string temp = std::to_string(counter);
+  board[row][col] = knight;
+  solution[row-2][col-2] = counter;
   usleep(80000);
   print_board(board,lines);
+  counter++;
 
-  if (!solved) solve(board,lines,row-1,col+2,cells,solved);
-  if (!solved) solve(board,lines,row+1,col+2,cells,solved);
-  if (!solved) solve(board,lines,row+1,col-2,cells,solved);
-  if (!solved) solve(board,lines,row-1,col-2,cells,solved);
-  if (!solved) solve(board,lines,row-2,col+1,cells,solved);
-  if (!solved) solve(board,lines,row-2,col-1,cells,solved);
-  if (!solved) solve(board,lines,row+2,col-1,cells,solved);
-  if (!solved) solve(board,lines,row+2,col-1,cells,solved);
+  if (!solved) solve(board,lines,row-1,col+2,goal,solved);
+  if (!solved) solve(board,lines,row+1,col+2,goal,solved);
+  if (!solved) solve(board,lines,row+1,col-2,goal,solved);
+  if (!solved) solve(board,lines,row-1,col-2,goal,solved);
+  if (!solved) solve(board,lines,row-2,col+1,goal,solved);
+  if (!solved) solve(board,lines,row-2,col-1,goal,solved);
+  if (!solved) solve(board,lines,row+2,col-1,goal,solved);
+  if (!solved) solve(board,lines,row+2,col-1,goal,solved);
 
-
-  if (!solved) {
-    board[row][col]=visited;
-  }
+  // if (!solved) {
+  //   board[row][col]=visited;
+  //   counter--;
+  // }
 }
+
 int main(int argc, char const *argv[]) {
   std::cout << "Project 1: Jubayer A" << '\n';
-  std::string board[27];
+  std::string board[10];
+
   int lines;
   lines = load_board("board.dat",board);
 
   std::cout << "[2J;\n";
   print_board(board,lines);
   bool solved = false;
-  int cells = 25;
-  solve(board,lines,2,2,cells,solved);
+  int goal = 25;
+  solve(board,lines,2,2,goal,solved);
   print_board(board,lines);
   std::cout << "Done!\n";
+  
+  print_solution();
   return 0;
 }
