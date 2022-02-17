@@ -63,8 +63,9 @@ void solve(std::string board[], int lines, int row, int col, int goal, bool &sol
   // std::string temp = std::to_string(counter);
   board[row][col] = knight;
   solution[row-2][col-2] = counter;
-  usleep(80000);
+  // usleep(80000);
   print_board(board,lines);
+  //print_solution();
   counter++;
 
   if (!solved) solve(board,lines,row-1,col+2,goal,solved);
@@ -76,10 +77,11 @@ void solve(std::string board[], int lines, int row, int col, int goal, bool &sol
   if (!solved) solve(board,lines,row+2,col-1,goal,solved);
   if (!solved) solve(board,lines,row+2,col-1,goal,solved);
 
-  // if (!solved) {
-  //   board[row][col]=visited;
-  //   counter--;
-  // }
+  if (!solved) {
+    board[row][col]=cell;
+    counter--;
+    solution[row-2][col-2] = 0;
+  }
 }
 
 int main(int argc, char const *argv[]) {
@@ -96,7 +98,7 @@ int main(int argc, char const *argv[]) {
   solve(board,lines,2,2,goal,solved);
   print_board(board,lines);
   std::cout << "Done!\n";
-  
+
   print_solution();
   return 0;
 }
