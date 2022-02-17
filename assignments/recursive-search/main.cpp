@@ -63,7 +63,7 @@ void solve(std::string board[], int lines, int row, int col, int goal, bool &sol
   // std::string temp = std::to_string(counter);
   board[row][col] = knight;
   solution[row-2][col-2] = counter;
-  // usleep(80000);
+  //usleep(100);
   print_board(board,lines);
   //print_solution();
   counter++;
