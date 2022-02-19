@@ -10,7 +10,7 @@ char cell = '.';
 char visited=',';
 int counter = 1;
 
-std::vector<std::vector<int>> solution (8, std::vector<int> (8, 0));
+std::vector<std::vector<int>> solution (5, std::vector<int> (5, 0));
 
 
 int load_board(std::string filename, std::string *board){
@@ -82,7 +82,7 @@ void solve(std::string board[], int lines, int row, int col, int goal, bool &sol
 
 int main(int argc, char const *argv[]) {
   std::cout << "Project 1: Jubayer A" << '\n';
-  std::string board[13];
+  std::string board[10];
 
   int lines;
   lines = load_board("board.dat",board);
@@ -90,7 +90,7 @@ int main(int argc, char const *argv[]) {
   std::cout << "[2J;\n";
   print_board(board,lines);
   bool solved = false;
-  int goal = 64;
+  int goal = 25;
   solve(board,lines,2,2,goal,solved);
   print_board(board,lines);
   std::cout << "Done!\n";
