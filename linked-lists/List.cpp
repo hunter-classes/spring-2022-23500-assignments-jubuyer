@@ -31,15 +31,45 @@ std::string List::toString(){
 void List::locate(int location, std::string data) {
   int counter = 0;
   Node *walker = head;
+  Node *insertion = new Node(data);
 
-  while(counter != (location-1)) {
+  if(location==0) {
+    insertion->setNext(head);
+    head = insertion;
+    return;
+  }
+  while(counter != (location-1) && walker != nullptr) {
     walker = walker->getNext();
     counter++;
   }
 
-  Node *insertion = new Node(data);
   insertion->setNext(walker->getNext());
   walker->setNext(insertion);
+
+  return;
+}
+
+void List::remove(int location) {
+  int counter = 0;
+  Node *walker = head;
+  if(location == 0) {
+    if(walker->getNext() == nullptr) {
+      head = nullptr;
+    } else {
+      walker = walker->getNext();
+      head=walker;
+    }
+    return;
+  }
+
+  while(counter != (location-1) && walker != nullptr) {
+    walker = walker->getNext();
+    counter++;
+  }
+
+  Node *stroller = walker->getNext();
+  walker->setNext(stroller->getNext());
+  stroller->setNext(nullptr);
 
   return;
 }
