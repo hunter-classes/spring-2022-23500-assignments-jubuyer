@@ -79,3 +79,14 @@ void List::remove(int location) {
 
   return;
 }
+
+List::~List() {
+  Node *walker = head;
+  while(walker != nullptr) {
+    walker->getNext();
+    delete walker;
+    walker = nullptr;
+  }
+
+  head=nullptr;
+}
