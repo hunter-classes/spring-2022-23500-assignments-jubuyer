@@ -30,21 +30,23 @@ std::string List::toString(){
 
 void List::locate(int location, std::string data) {
   int counter = 0;
-  Node *walker = head;
-  Node *insertion = new Node(data);
+  Node *walker = head; //traverse list
+  Node *insertion = new Node(data); //new node to insert
 
-  if(location==0) {
-    insertion->setNext(head);
-    head = insertion;
+  if(location==0) { //if tring to insert to first location
+    insertion->setNext(head); //point the new node to the node head is currently pointing to
+    head = insertion; //point the head to the new node (new first item)
     return;
   }
+
+  //traverse to the node right before where we are trying to insert
   while(counter != (location-1) && walker != nullptr) {
     walker = walker->getNext();
     counter++;
   }
 
-  insertion->setNext(walker->getNext());
-  walker->setNext(insertion);
+  insertion->setNext(walker->getNext()); //make the new node point to the old node's next node
+  walker->setNext(insertion); //make the node before where we are inserting point to the new node
 
   return;
 }
@@ -52,24 +54,28 @@ void List::locate(int location, std::string data) {
 void List::remove(int location) {
   int counter = 0;
   Node *walker = head;
+  //if trying to remove the first node in the list
   if(location == 0) {
     if(walker->getNext() == nullptr) {
-      head = nullptr;
+      head = nullptr; //if theres only one item in the list head now points to nullptr
     } else {
-      walker = walker->getNext();
+      walker = walker->getNext(); //or else traverse one node, set head to that node
       head=walker;
     }
     return;
   }
 
+  //traverse to the node right before where we are trying to remove
   while(counter != (location-1) && walker != nullptr) {
     walker = walker->getNext();
     counter++;
   }
 
+  //traverse to the node we are trying to remove
   Node *stroller = walker->getNext();
+  //set the node before the one being removed to the removed nodes next node
   walker->setNext(stroller->getNext());
-  stroller->setNext(nullptr);
+  stroller->setNext(nullptr); //set the next node for the node thats to be removed to nullptr
 
   return;
 }
