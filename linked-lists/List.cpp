@@ -45,6 +45,12 @@ void List::locate(int location, std::string data) {
     counter++;
   }
 
+  if(walker == nullptr && (counter) < location) {
+    // throw std::out_of_range("Out of range");
+    std::cerr << "Err: Out of Bounds\n";
+    return;
+  }
+
   insertion->setNext(walker->getNext()); //make the new node point to the old node's next node
   walker->setNext(insertion); //make the node before where we are inserting point to the new node
 
@@ -71,8 +77,17 @@ void List::remove(int location) {
     counter++;
   }
 
+  if(walker == nullptr) {
+    std::cerr << "Err: Out of Bounds\n";
+    return;
+  }
+
   //traverse to the node we are trying to remove
   Node *stroller = walker->getNext();
+  if(stroller == nullptr) {
+    std::cerr << "Err: Out of Bounds\n";
+    return;
+  }
   //set the node before the one being removed to the removed nodes next node
   walker->setNext(stroller->getNext());
   stroller->setNext(nullptr); //set the next node for the node thats to be removed to nullptr
