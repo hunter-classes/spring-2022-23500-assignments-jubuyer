@@ -14,16 +14,16 @@ int main(int argc, char const *argv[]) {
   std::cout << l1->toString() << "\n\n";
 
   std::cout << "Testing locate()" << '\n';
-  l1->locate(0,"x");
+  l1->locate(3,"x");
   std::cout << l1->toString() << "\n\n";
 
   std::cout << "Testing remove()" << '\n';
-  l1->remove(0);
+  l1->remove(7);
   std::cout << l1->toString() << "\n\n";
 
   std::cout << "Testing destructor" << '\n';
   delete l1;
-  std::cout << l1->toString() << '\n';
+  //std::cout << l1->toString() << '\n';
 
   return 0;
 }
