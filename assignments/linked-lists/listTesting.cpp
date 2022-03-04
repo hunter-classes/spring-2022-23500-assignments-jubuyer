@@ -14,7 +14,7 @@ int main(int argc, char const *argv[]) {
   std::cout << l1->toString() << "\n\n";
 
   std::cout << "Testing locate()" << '\n';
-  l1->locate(3,"x");
+  l1->locate(8,"x");
   std::cout << l1->toString() << "\n\n";
 
   std::cout << "Testing remove()" << '\n';
