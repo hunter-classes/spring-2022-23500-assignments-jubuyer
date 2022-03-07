@@ -10,11 +10,11 @@ private:
 public:
   ONode();
   ONode(int data);
-  ONode(int, Node *next);
+  ONode(int, ONode *next);
 
   void setData(int data);
-  void setNext(Node *next);
+  void setNext(ONode *next);
 
   int getData();
-  Node *getNext();
+  ONode *getNext();
 };
