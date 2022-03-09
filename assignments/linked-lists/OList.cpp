@@ -9,33 +9,66 @@ OList::OList() {
 void OList::insert(int data) {
   ONode *walker = head; //traverse list
   ONode *insertion = new ONode(data); //new node to insert
+  ONode *stroller = nullptr;
 
-  if(walker->getNext() == nullptr) {
-    insertion->setNext() = head;
+  if (walker == nullptr) {
+    insertion->setNext(head);
     head = insertion;
     return;
   }
 
+  while(walker != nullptr && (data > walker->getData())) {
+    stroller = walker;
+    walker = walker->getNext();
+  }
+
+  if(stroller == nullptr) {
+    insertion->setNext(head);
+    head = insertion;
+  } else {
+    insertion->setNext(stroller->getNext()); //make the new node point to the old node's next node
+    stroller->setNext(insertion); //make the node before where we are inserting point to the new node
+  }
+
+  return;
+}
+
+bool OList::contains(int value) {
+  ONode *walker = head; //traverse list
+
+  if (walker == nullptr) {
+    return false;
+  }
+
   while(walker != nullptr) {
-    if(data < walker->getData()) {
-      insertion->setNext(walker->getNext()); //make the new node point to the old node's next node
-      walker->setNext(insertion); //make the node before where we are inserting point to the new node
-      return;
+    if(value == walker->getData()) {
+      return true;
     }
 
     walker = walker->getNext();
   }
 
-  //if the function hasn't yet returned it means the insertion data is greatest
-  //so we can set next to nullptr and insert it
+  return false;
 }
 
-bool OList::contains(int value) {
+int OList::get(int location) {
+  int counter = 0;
+  ONode *walker = head; //traverse list
 
-}
+  if (walker == nullptr) {
+    throw std::out_of_range("Out of range");
+  }
 
-int OList::value(int location) {
+  while(walker != nullptr && counter < location) {
+    walker = walker->getNext();
+    counter++;
+  }
 
+  if(walker == nullptr && ((location - counter) > 1)) {
+    throw std::out_of_range("Out of range");
+  }
+
+  return walker->getData();
 }
 
 void OList::remove(int location) {
@@ -82,7 +115,7 @@ std::string OList::toString() {
   std::string s = "";
   ONode *walker = head;
   while(walker != nullptr){
-    s = s+ walker->getData() + "-->";
+    s = s+ std::to_string(walker->getData()) + " --> ";
     walker = walker->getNext();
 
   }
