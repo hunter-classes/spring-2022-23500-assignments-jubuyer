@@ -108,7 +108,7 @@ void OList::remove(int location) {
 }
 
 void OList::reverse() {
-
+  
 }
 
 std::string OList::toString() {
