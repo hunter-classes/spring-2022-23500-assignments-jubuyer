@@ -108,7 +108,33 @@ void OList::remove(int location) {
 }
 
 void OList::reverse() {
-  
+  ONode *walker = head; //p1
+  ONode *stroller = nullptr; //p2
+  ONode *trailer = nullptr; //p3
+  int counter = 0;
+
+  if(walker == nullptr || walker->getNext() == nullptr) {
+    return;
+  }
+
+
+  stroller = walker->getNext();
+  trailer = stroller->getNext();
+
+  walker->setNext(nullptr);
+  stroller->setNext(walker);
+
+
+  while(trailer != nullptr) {
+    walker = stroller;
+    stroller = trailer;
+    trailer = trailer->getNext();
+
+    stroller->setNext(walker);
+  }
+
+  head = stroller;
+  return;
 }
 
 std::string OList::toString() {

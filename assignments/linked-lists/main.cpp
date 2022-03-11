@@ -51,5 +51,31 @@ int main(int argc, char const *argv[]) {
   // std::cout << list->toString() << '\n';
   // list->remove(100); works
   // std::cout << list->toString() << '\n';
+
+  std::cout << "Testing reverse()" << '\n'; //works
+  OList *test = new OList();
+  OList *test2 = new OList();
+  OList *test3 = new OList();
+  test->insert(2);
+
+  std::cout << test->toString() << '\n';
+  test->reverse();
+  std::cout << test->toString() << "\n\n";
+
+  std::cout << test2->toString() << '\n';
+  test2->reverse();
+  std::cout << test2->toString() << "\n\n";
+
+  std::cout << list->toString() << '\n';
+  list->reverse();
+  std::cout << list->toString() << "\n\n";
+
+  test3->insert(5);
+  test3->insert(6);
+  std::cout << test3->toString() << '\n';
+  test3->reverse();
+  std::cout << test3->toString() << "\n\n";
+
+
   return 0;
 }
