@@ -10,6 +10,9 @@ main: main.o ONode.o OList.o
 main.o: main.cpp Node.h
 	$(CC) $(CFLAGS) -c $<
 
+tests: tests.o ONode.o OList.o
+	$(CC) $(CFLAGS) -o $@ $^
+
 tests.o: tests.cpp doctest.h
 	$(CC) $(CFLAGS) -c $<
 
