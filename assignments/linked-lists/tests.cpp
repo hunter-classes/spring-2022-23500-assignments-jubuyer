@@ -26,16 +26,6 @@
 //     CHECK (list2->toString() == "why-->c-->a-->x-->z-->me-->nullptr");
 // }
 //
-// TEST_CASE("Locate") {
-//     CHECK(list2->locate(0) == "why");
-//     CHECK(list2->locate(1) == "c");
-//     CHECK(list2->locate(2) == "a");
-//     CHECK(list2->locate(3) == "x");
-//     CHECK(list2->locate(4) == "z");
-//     CHECK(list2->locate(5) == "me");
-//     CHECK_THROWS_AS(list2->locate(6), std::out_of_range);
-// }
-//
 // TEST_CASE("Remove") {
 //     list2->remove(0);
 //     CHECK (list2->toString() == "c-->a-->x-->z-->me-->nullptr");
