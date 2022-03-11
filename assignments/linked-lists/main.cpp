@@ -76,6 +76,8 @@ int main(int argc, char const *argv[]) {
   test3->reverse();
   std::cout << test3->toString() << "\n\n";
 
-
+  std::cout << "Testing destructor" << '\n'; //works
+  delete list;
+  std::cout << list->toString() << '\n';
   return 0;
 }

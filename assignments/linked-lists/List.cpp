@@ -46,8 +46,7 @@ void List::locate(int location, std::string data) {
   }
 
   if(walker == nullptr && (counter) < location) {
-    // throw std::out_of_range("Out of range");
-    std::cerr << "Err: Out of Bounds\n";
+    throw std::out_of_range("Out of range");
     return;
   }
 
