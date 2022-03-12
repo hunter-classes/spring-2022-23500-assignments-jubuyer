@@ -88,21 +88,21 @@ std::vector<int> merge(std::vector<int> left,
 std::vector<int> msort(std::vector<int> v) {
   if(v.size() < 2) {
     return v;
-  } else {
-    std::vector<int> v1;
-    std::vector<int> v2;
-    int i = v.size();
-    int j = 0;
-    while(j < i/2) {
-      v1.push_back(v[j]);
-      j++;
-    }
-    while(j < i) {
-      v2.push_back(v[j]);
-      j++;
-    }
-    return merge(msort(v1), msort(v2));
   }
+
+  std::vector<int> v1;
+  std::vector<int> v2;
+  int size = v.size();
+
+  for(int i = 0; i < size / 2; i++) {
+    v1.push_back(v[i]);
+  }
+
+  for(int j =  size/2; j < size; j++) {
+    v2.push_back(v[j]);
+  }
+  
+  return merge(ssort(v1), ssort(v2));
 }
 
 int main()
@@ -129,7 +129,7 @@ int main()
   //
   // print_vector(merge(left, right));
 
-  std::vector<int> test = { 1, 2, 3, 7, 8, 12, 16, 19, 20, 5, 6, 10, 15 };
+  std::vector<int> test = { 129, 12,124,53,1,5,0,-3,1,6 };
   print_vector(test);
 
   print_vector(msort(test));
