@@ -7,6 +7,12 @@
 #include <sys/time.h>
 #include <math.h>
 
+void print_vector(std::vector<int> a){
+  for (auto i : a) {
+    std::cout << i << ", ";
+  }
+}
+
 int count(std::vector<int> v, int value) {
   int size = v.size();
   int counter = 0;
@@ -36,6 +42,16 @@ int mode(std::vector<int> v) {
   int size = v.size();
   for(int i = 0; i < size; i++) {
     store.push_back(count(v,v[i]));
+  }
+
+  return v[largest(store)];
+}
+
+int mode2(std::vector<int> v) {
+  int size = v.size();
+  std::vector<int> store(size,0);
+  for(int i = 0; i < size; i++) {
+    store[v[i]] += 1;
   }
 
   return v[largest(store)];
@@ -76,6 +92,23 @@ int main(int argc, char const *argv[]) {
   std::cout << count(vec, 100) << '\n';
   std::cout << "Testing mode" << '\n';
   std::cout << mode(vec) << '\n';
+  //std::cout << mode2(vec) << '\n';
+
+  std::cout << "Testing mode2" << '\n';
+  int size2 = 10000; // default vector size
+  int max_val2 = 100; // default max value for entries
+
+  srand(time(NULL));
+  std::vector<int> a(size2);
+
+  for(i=0;i<size2;i++){
+    a[i] = rand()%max_val2;
+  }
+
+  print_vector(a);
+
+  std::cout << "\nmode2: " << mode2(a) << "\n";
+  std::cout << "\nmode1: " << mode(a) << "\n"; //way slower haha
 
   return 0;
 }
