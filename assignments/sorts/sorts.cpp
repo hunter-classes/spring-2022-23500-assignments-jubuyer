@@ -102,7 +102,7 @@ std::vector<int> msort(std::vector<int> v) {
     v2.push_back(v[j]);
   }
 
-  return merge(msort(v1), msort(v2));
+  return merge(ssort(v1), ssort(v2));
 }
 
 int main()
