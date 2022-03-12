@@ -45,7 +45,17 @@ int mode(std::vector<int> v) {
     store.push_back(count(v,v[i]));
   }
 
-  return v[largest(store)];
+  int max = INT_MIN;
+  int index = 0;
+  int storage = store.size();
+  for(int i = 0; i < storage; i++) {
+    if(store[i] > max) {
+      max = store[i];
+      index = i;
+    }
+  }
+
+  return v[index];
 }
 
 int mode2(std::vector<int> v) {
