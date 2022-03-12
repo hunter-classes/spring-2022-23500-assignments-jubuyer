@@ -121,24 +121,37 @@ int main()
   // a = ssort(a);
   // print_vector(a);
 
-  std::vector<int> left = { 1, 2, 5, 6, 10, 15 };
-  std::vector<int> right = { 3, 7, 8, 12, 16, 19, 20};
-
-  // print_vector(left);
-  // print_vector(right);
+  // std::vector<int> left = { 1, 2, 5, 6, 10, 15 };
+  // std::vector<int> right = { 3, 7, 8, 12, 16, 19, 20};
   //
-  // print_vector(merge(left, right));
+  // // print_vector(left);
+  // // print_vector(right);
+  // //
+  // // print_vector(merge(left, right));
+  //
+  // std::vector<int> test = { 129, 12,124,53,1,5,0,-3,1,6 };
+  //  print_vector(test);
+  //
+  //  print_vector(msort(test));
+  //
+  //  std::vector<int> test1 = {1, 2, 5, 6, 3, 7, 8, 1, 16, 19, 20, 2, 10, 15};
+  //   print_vector(test1);
+  //
+  //   print_vector(msort(test1));
 
-  std::vector<int> test = { 129, 12,124,53,1,5,0,-3,1,6 };
-   print_vector(test);
+    std::cout << "man." << '\n';
+    int size = 20;
+    int max_val = 100;
+    srand(time(nullptr));
+    std::vector<int> b(size);
+        for(int i = 0; i < size; i++) {
+            b[i] = rand()%max_val;
+        }
 
-   print_vector(msort(test));
-
-   std::vector<int> test1 = {1, 2, 5, 6, 3, 7, 8, 1, 16, 19, 20, 2, 10, 15};
-print_vector(test1);
-
-print_vector(msort(test1));
-
+    std::cout << "Unsorted vector: ";
+    print_vector(b);
+    std::cout << "Merge sorted vector: ";
+    print_vector(msort(b));
 
   return 0;
 }
