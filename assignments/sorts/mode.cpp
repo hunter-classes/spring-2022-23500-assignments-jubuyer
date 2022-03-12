@@ -8,8 +8,9 @@
 #include <math.h>
 
 void print_vector(std::vector<int> a){
-  for (auto i : a) {
-    std::cout << i << ", ";
+  int size = a.size();
+  for(int i = 0; i < size; i++)  {
+    std::cout << i << ':' << a[i] << '\n';
   }
 }
 
@@ -49,12 +50,26 @@ int mode(std::vector<int> v) {
 
 int mode2(std::vector<int> v) {
   int size = v.size();
-  std::vector<int> store(size,0);
+  std::vector<int> store(largest(v),0);
   for(int i = 0; i < size; i++) {
     store[v[i]] += 1;
   }
 
-  return v[largest(store)];
+  //testing purposes
+  // std::cout << "PRINTING STORE" << '\n';
+  // print_vector(store);
+
+  int max = INT_MIN;
+  int index = 0;
+  int storage = store.size();
+  for(int i = 0; i < storage; i++) {
+    if(store[i] > max) {
+      max = store[i];
+      index = i;
+    }
+  }
+
+  return index;
 }
 
 int main(int argc, char const *argv[]) {
@@ -80,7 +95,7 @@ int main(int argc, char const *argv[]) {
   std::cout << "Testing count" << '\n';
   std::cout << count(vect, 100) << '\n';
 
-  std::vector<int> vec = {1,5,4,6,4,4,8,6,4,12,6,22};
+  std::vector<int> vec = {1,5,4,6,4,4,4,8,12,12,12,12,12,12,12,12,12,6,4,12,6,22};
   for(auto i : vec) {
     std::cout << i << ',';
   }
@@ -92,7 +107,7 @@ int main(int argc, char const *argv[]) {
   std::cout << count(vec, 100) << '\n';
   std::cout << "Testing mode" << '\n';
   std::cout << mode(vec) << '\n';
-  //std::cout << mode2(vec) << '\n';
+  std::cout << mode2(vec) << '\n';
 
   std::cout << "Testing mode2" << '\n';
   int size2 = 10000; // default vector size
@@ -105,7 +120,7 @@ int main(int argc, char const *argv[]) {
     a[i] = rand()%max_val2;
   }
 
-  print_vector(a);
+  // print_vector(a);
 
   std::cout << "\nmode2: " << mode2(a) << "\n";
   std::cout << "\nmode1: " << mode(a) << "\n"; //way slower haha
