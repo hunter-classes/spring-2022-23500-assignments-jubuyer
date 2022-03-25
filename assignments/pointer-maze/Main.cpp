@@ -13,7 +13,8 @@ const std::string kYourName = "Jubayer";
 
 /* Change these constants to contain the paths out of your mazes. */
 //for the default maze, solutions: SEENSESSNNWWSSW or SESSWENNENSESS
-const std::string kPathOutOfNormalMaze = "SESSWENNENSESS";
+//for the personal maze, solutions: WWSEEWSSEWNWSWNN or WWSEEWSWSWNNSSENESE
+const std::string kPathOutOfNormalMaze = "WWSEEWSSEWNWSWNN";
 const std::string kPathOutOfTwistyMaze = "TODO: Replace this string with your path out of the twisty maze.";
 
 int main() {
