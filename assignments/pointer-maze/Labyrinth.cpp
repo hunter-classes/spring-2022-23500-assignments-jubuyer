@@ -3,6 +3,24 @@
 
 #include "Labyrinth.h"
 
+bool inventoryComplete(MazeCell* current, bool& spellbook, bool& potion, bool& wand) {
+  if(current->whatsHere == Item::SPELLBOOK) {
+    spellbook = true;
+  }
+  if(current->whatsHere == Item::POTION) {
+    potion = true;
+  }
+  if(current->whatsHere == Item::WAND) {
+    wand = true;
+  }
+
+  if (spellbook && potion && wand) {
+    return true;
+  }
+
+  return false;
+}
+
 bool isPathToFreedom(MazeCell* start, const std::string& moves) {
   int pathLength = moves.length();
   //necessary components
@@ -11,22 +29,18 @@ bool isPathToFreedom(MazeCell* start, const std::string& moves) {
   bool wand = false;
 
   for(int i = 0; i < pathLength; i++) {
+    inventoryComplete(start, spellbook, potion, wand);
+    if(inventoryComplete(start, spellbook, potion, wand)) {
+      return true;
+    }
+
     if(moves[i] == 'N' || moves[i] == 'n') {
       if(start->north == nullptr) { //if a pointer in this direction doesnt exist, break
         return false;
       }
       start = start->north; //go in the direction since we've checked that it exists
+      inventoryComplete(start, spellbook, potion, wand);
 
-      //check if it has any of the special items we need
-      if(start->whatsHere == Item::SPELLBOOK) {
-        spellbook = true;
-      }
-      if(start->whatsHere == Item::POTION) {
-        potion = true;
-      }
-      if(start->whatsHere == Item::WAND) {
-        wand = true;
-      }
       /*
       im lazy and my code sucks so theres a gap
       ^^^^^ABOVE IS IF THE STRING SAYS GO NORTH^^^^^
@@ -36,17 +50,7 @@ bool isPathToFreedom(MazeCell* start, const std::string& moves) {
         return false;
       }
       start = start->south;
-
-      //check if it has any of the special items we need
-      if(start->whatsHere == Item::SPELLBOOK) {
-        spellbook = true;
-      }
-      if(start->whatsHere == Item::POTION) {
-        potion = true;
-      }
-      if(start->whatsHere == Item::WAND) {
-        wand = true;
-      }
+      inventoryComplete(start, spellbook, potion, wand);
 
       /*
       im lazy and my code sucks so theres a gap
@@ -57,17 +61,8 @@ bool isPathToFreedom(MazeCell* start, const std::string& moves) {
         return false;
       }
       start = start->east;
+      inventoryComplete(start, spellbook, potion, wand);
 
-      //check if it has any of the special items we need
-      if(start->whatsHere == Item::SPELLBOOK) {
-        spellbook = true;
-      }
-      if(start->whatsHere == Item::POTION) {
-        potion = true;
-      }
-      if(start->whatsHere == Item::WAND) {
-        wand = true;
-      }
       /*
       im lazy and my code sucks so theres a gap
       ^^^^^ABOVE IS IF THE STRING SAYS GO EAST^^^^^
@@ -77,27 +72,15 @@ bool isPathToFreedom(MazeCell* start, const std::string& moves) {
         return false;
       }
       start = start->west;
+      inventoryComplete(start, spellbook, potion, wand);
 
-      //check if it has any of the special items we need
-      if(start->whatsHere == Item::SPELLBOOK) {
-        spellbook = true;
-      }
-      if(start->whatsHere == Item::POTION) {
-        potion = true;
-      }
-      if(start->whatsHere == Item::WAND) {
-        wand = true;
-      }
       /*
       im lazy and my code sucks so theres a gap
       ^^^^^ABOVE IS IF THE STRING SAYS WEST^^^^^
       */
     }
-
-    if (spellbook && potion && wand) {
-      return true;
-    }
+    inventoryComplete(start, spellbook, potion, wand);
   }
 
-  return false;
+  return inventoryComplete(start, spellbook, potion, wand);
 }
