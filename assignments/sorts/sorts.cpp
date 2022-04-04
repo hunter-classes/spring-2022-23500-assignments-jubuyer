@@ -15,8 +15,8 @@ void print_vector(std::vector<int> a){
 
 
 int find_min_index(std::vector<int> a,
-		   int start_index,
-		   int stop_index){
+	   int start_index,
+	   int stop_index) {
   int min_index = start_index;
   int i;
   for (i = start_index ; i < stop_index; i++){
@@ -105,53 +105,161 @@ std::vector<int> msort(std::vector<int> v) {
   return merge(msort(v1), msort(v2));
 }
 
-int main()
-{
-  // int size=102000;
-  // int max_val=1000;
+std::vector<int> qsort (std::vector<int> list) {
+	//base case
+	if (list.size() <= 1) {
+		return list;
+	}
 
-  // srand(time(nullptr));
-  // std::vector<int> a(size);
-  // int i;
-  // for (i=0;i<size; i++){
-  //   a[i] = rand()%max_val;
-  // }
-  // print_vector(a);
-  // std::cout << "\n";
-  // a = ssort(a);
-  // print_vector(a);
+	//select a pivot value.
+	//for now just pick list[0]
+	int pivot = list[0];
+	//make 2 new vectors
+	std::vector<int> lower, higher;
 
-  // std::vector<int> left = { 1, 2, 5, 6, 10, 15 };
-  // std::vector<int> right = { 3, 7, 8, 12, 16, 19, 20};
-  //
-  // // print_vector(left);
-  // // print_vector(right);
-  // //
-  // // print_vector(merge(left, right));
-  //
-  // std::vector<int> test = { 129, 12,124,53,1,5,0,-3,1,6 };
-  //  print_vector(test);
-  //
-  //  print_vector(msort(test));
-  //
-  //  std::vector<int> test1 = {1, 2, 5, 6, 3, 7, 8, 1, 16, 19, 20, 2, 10, 15};
-  //   print_vector(test1);
-  //
-  //   print_vector(msort(test1));
+	//copy all the values < pivot value to lower
+	for(int i = 1; i < list.size(); i++) {
+		if(list[i] < pivot) {
+			lower.push_back(list[i]);
+		} else {
+			higher.push_back(list[i]);
+		}
+	}
+	//copy all the values >= pivot value to higher
 
-    std::cout << "man." << '\n';
-    int size = 20;
-    int max_val = 100;
-    srand(time(nullptr));
-    std::vector<int> b(size);
-        for(int i = 0; i < size; i++) {
-            b[i] = rand()%max_val;
-        }
+	lower = qsort(lower);
+	higher = qsort(higher);
 
-    std::cout << "Unsorted vector: ";
-    print_vector(b);
-    std::cout << "Merge sorted vector: ";
-    print_vector(msort(b));
+	//copy everything back into list
+	list.clear();
+	for(auto j: lower) {
+		list.push_back(j);
+	}
 
-  return 0;
+	list.push_back(pivot);
+
+	for(auto k: higher) {
+		list.push_back(k);
+	}
+	//return the sorted list
+
+	return list;
 }
+
+std::vector<int> qsort2(std::vector<int> list, int low, int high) {
+  //base case
+	if (high == 1 && (list[high] > list[low])) {
+		return list;
+	}
+
+	// //select a pivot value.
+	// //pick the median value btwn low and high
+  int median = (low + high) / 2;
+  int pivot = list[median];
+
+  if(list[low] < pivot) {
+    low++;
+  } else {
+    int tmp = list[low];
+    list[low] = list[high];
+    list[high] = tmp;
+    high--;
+  }
+
+
+  if((low+1) == high) {
+    std::cout << "split" << '\n';
+    qsort2(list, 0, low);
+    qsort2(list, high, (list.size()-1));
+  }
+
+  qsort2(list, low, high);
+
+  return list;
+}
+
+void print_help(char *command_name){
+  std::cout << "Usage: "<< command_name;
+  std::cout << " [-h|-p|-m N|-s N|-a algorithm]\n\n";
+  std::cout << " -m MAX_ELEMENT_SIZE\n";
+  std::cout << " -s DATA_SET_SIZE\n";
+  std::cout << " -a[s|m]: s - selection, m - merge, q - quick, i - in-place\n";
+}
+
+extern char *optarg;
+
+int main(int argc, char *argv[]) {
+  int size = 20; // default vector size
+  int max_val = 100; // default max value for entries
+
+  char algorithm = 's' ; //default to selection sort
+  bool print = false; // do we print before and after sorting?
+  char c;
+
+
+  while ( ( c = getopt(argc, argv, "phs:m:a:")) != -1) {
+
+    switch (c) {
+    case 'h' :
+    	print_help(argv[0]);
+    	exit(0);
+    	break;
+    case 'p' :
+    	print = true;
+    	break;
+    case 's' :
+    	size = std::stoi(optarg);
+    	break;
+    case 'm' :
+    	max_val = std::stoi(optarg);
+    	break;
+    case 'a':
+    	algorithm = optarg[0]; // or *optarg
+      }
+    }
+
+    srand(time(nullptr));
+    std::vector<int> a(size);
+    int i;
+    for (i=0;i<size; i++){
+      a[i] = rand()%max_val;
+    }
+
+
+    if (print) {
+      print_vector(a);
+      std::cout << "\n";
+    }
+
+    std::cout << "Starting the sort!\n";
+    struct timeval tp;
+
+    gettimeofday(&tp,NULL);
+    long start_time = tp.tv_sec *1000 + tp.tv_usec / 1000;
+
+    if (algorithm == 's'){
+      a = ssort(a);
+    } else if (algorithm == 'm'){
+      a = msort(a);
+    } else if (algorithm == 'q'){
+      a = qsort(a);
+    } else if (algorithm == 'i'){
+      a = qsort2(a, 0, (a.size()-1));
+    }
+
+
+    gettimeofday(&tp,NULL);
+    long current_time = tp.tv_sec *1000 + tp.tv_usec / 1000;
+
+    long elapsed = current_time - start_time;
+
+    if (print) {
+      print_vector(a);
+    }
+    std::cout << "Algorithm: " << algorithm << "\n";
+    std::cout << "Time: " << elapsed << "\n";
+
+
+
+    return 0;
+  }
