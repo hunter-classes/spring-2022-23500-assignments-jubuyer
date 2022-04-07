@@ -146,36 +146,30 @@ std::vector<int> qsort (std::vector<int> list) {
 	return list;
 }
 
-std::vector<int> qsort2(std::vector<int> list, int low, int high) {
-  //base case
-	if (high == 1 && (list[high] > list[low])) {
-		return list;
-	}
-
-	// //select a pivot value.
-	// //pick the median value btwn low and high
-  int median = (low + high) / 2;
-  int pivot = list[median];
-
-  if(list[low] < pivot) {
-    low++;
-  } else {
-    int tmp = list[low];
-    list[low] = list[high];
-    list[high] = tmp;
-    high--;
+void qsort2(std::vector<int>& list, int low, int high) {
+  int pivotIndex = low + (high - low) / 2;
+  int pivotValue = list[pivotIndex];
+  int i = low, j = high;
+  int temp;
+  while(i <= j) {
+      while(list[i] < pivotValue) {
+          i++;
+      }
+      while(list[j] > pivotValue) {
+          j--;
+      }
+      if(i <= j) {
+          temp = list[i];
+          list[i] = list[j];
+          list[j] = temp;
+          i++;
+          j--;
+      }
   }
-
-
-  if((low+1) == high) {
-    std::cout << "split" << '\n';
-    qsort2(list, 0, low);
-    qsort2(list, high, (list.size()-1));
+  if(low < high) {
+    qsort2(list, low, i - 1);
+    qsort2(list, i, high);
   }
-
-  qsort2(list, low, high);
-
-  return list;
 }
 
 void print_help(char *command_name){
@@ -244,7 +238,7 @@ int main(int argc, char *argv[]) {
     } else if (algorithm == 'q'){
       a = qsort(a);
     } else if (algorithm == 'i'){
-      a = qsort2(a, 0, (a.size()-1));
+      qsort2(a, 0, (a.size()-1));
     }
 
 
