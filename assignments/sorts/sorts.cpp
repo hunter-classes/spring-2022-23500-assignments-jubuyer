@@ -148,14 +148,14 @@ std::vector<int> qsort (std::vector<int> list) {
 
 void qsort2(std::vector<int>& list, int low, int high) {
   int pivotIndex = low + (high - low) / 2;
-  int pivotValue = list[pivotIndex];
+  int pivot = list[pivotIndex];
   int i = low, j = high;
   int temp;
   while(i <= j) {
-      while(list[i] < pivotValue) {
+      while(list[i] < pivot) {
           i++;
       }
-      while(list[j] > pivotValue) {
+      while(list[j] > pivot) {
           j--;
       }
       if(i <= j) {
