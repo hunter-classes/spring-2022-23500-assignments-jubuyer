@@ -84,6 +84,6 @@ Time: 24
 ### Table Comparison
 | Size        | Merge Sort Time | Quick Sort (Basic) Time | Quick Sort (Good Pivot) Time | In-Place Quick Sort (Basic Pivot) Time | In-Place Quick Sort (Good Pivot) Time |
 | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
-| 1,000      | 8       | 9       | Title       | Title       | 0       |
+| 1,000      | 8       | 9       | Title       | Title       | 1       |
 | 10,000   | 77        | 445        | Text        | Text        | 3        |
-| 10,0000   | 851        | 44781        | Text        | Text        | 24        |
+| 100,000   | 851        | 44781        | Text        | Text        | 29        |
