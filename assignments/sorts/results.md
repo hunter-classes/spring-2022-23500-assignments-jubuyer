@@ -1,4 +1,5 @@
 # Comparisons Between Sort Algorithms
+Below is an analysis of how long different sorting algorithms take to sort a list of integers of varied sizes. At the bottom is a [chart comparison](https://github.com/hunter-classes/spring-2022-23500-assignments-jubuyer/edit/main/assignments/sorts/results.md#table-comparison) of the values.
 
 ## Merge Sort
 #### Time Complexity: O(n*log(n))
@@ -17,6 +18,13 @@ Algorithm: m
 Time: 77
 ```
 
+```c
+./sorts -m 20 -s 100000 -a m
+Starting the sort!
+Algorithm: m
+Time: 851
+```
+
 ## Quick Sort - *Basic*
 #### Time Complexity: O(n^2)
 ```c
@@ -31,6 +39,13 @@ Time: 9
 Starting the sort!
 Algorithm: q
 Time: 445
+```
+
+```c
+./sorts -m 20 -s 100000 -a q
+Starting the sort!
+Algorithm: q
+Time: 44781
 ```
 
 ## Quick Sort - *Basic and Smart Pivot*
@@ -58,3 +73,17 @@ Starting the sort!
 Algorithm: i
 Time: 3
 ```
+
+```c
+./sorts -m 20 -s 100000 -a i
+Starting the sort!
+Algorithm: i
+Time: 24
+```
+
+### Table Comparison
+| Size        | Merge Sort Time | Quick Sort (Basic) Time | Quick Sort (Good Pivot) Time | In-Place Quick Sort (Basic Pivot) Time | In-Place Quick Sort (Good Pivot) Time |
+| ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
+| 1,000      | 8       | 9       | Title       | Title       | 0       |
+| 10,000   | 77        | 445        | Text        | Text        | 3        |
+| 10,0000   | 851        | 44781        | Text        | Text        | 24        |
