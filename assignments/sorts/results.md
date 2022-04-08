@@ -90,7 +90,7 @@ Time: 3
 ./sorts -m 20 -s 100000 -a i
 Starting the sort!
 Algorithm: i
-Time: 24
+Time: 26
 ```
 ## Quick Sort - *In-Place and Smart Pivot*
 #### Time Complexity: O(n*log(n))
