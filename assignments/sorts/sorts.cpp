@@ -113,8 +113,31 @@ std::vector<int> qsort (std::vector<int> list) {
 
 	//select a pivot value.
 	//for now just pick list[0]
-	int pivot = list[0];
-	//make 2 new vectors
+  int pivot = list[0];
+  // for testing good pivot, also explained by my boy ivan
+  // int pivot;
+  // int low = 0;
+  // int high = list.size();
+  // int middle = low + (high - low) / 2;
+  // //explained by my boy ivan
+  // if (list[low] > list[middle]){
+  //   if (list[low] < list[high])
+  //     pivot = list[low];
+  //   else if (list[middle] > list[high])
+  //     pivot = list[middle];
+  //   else
+  //     pivot = list[high];
+  // }
+  // else{
+  //   if (list[high] > list[middle])
+  //     pivot = list[middle];
+  //   else if (list[low] > list[high])
+  //     pivot = list[low];
+  //   else
+  //     pivot = list[high];
+  // }
+
+  //make 2 new vectors
 	std::vector<int> lower, higher;
 
 	//copy all the values < pivot value to lower
@@ -147,8 +170,27 @@ std::vector<int> qsort (std::vector<int> list) {
 }
 
 void qsort2(std::vector<int>& list, int low, int high) {
-  int pivotIndex = low + (high - low) / 2;
-  int pivot = list[pivotIndex];
+  int middle = low + (high - low) / 2;
+  //int pivot;
+  int pivot = list[low];
+  //explained by my boy ivan
+  // if (list[low] > list[middle]){
+  //   if (list[low] < list[high])
+  //     pivot = list[low];
+  //   else if (list[middle] > list[high])
+  //     pivot = list[middle];
+  //   else
+  //     pivot = list[high];
+  // }
+  // else{
+  //   if (list[high] > list[middle])
+  //     pivot = list[middle];
+  //   else if (list[low] > list[high])
+  //     pivot = list[low];
+  //   else
+  //     pivot = list[high];
+  // }
+
   int i = low, j = high;
   int temp;
   while(i <= j) {
