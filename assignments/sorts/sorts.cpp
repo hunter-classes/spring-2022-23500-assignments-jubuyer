@@ -295,7 +295,37 @@ int main(int argc, char *argv[]) {
     std::cout << "Algorithm: " << algorithm << "\n";
     std::cout << "Time: " << elapsed << "\n";
 
-
+    std::cout << "Analysis in results.md" << '\n';
+    // std::cout << "MERGE SORT EXAMPLE" << '\n';
+    // std::vector<int> a2(10);
+    // int j;
+    // for (j=0;j<size; j++){
+    //   a2[j] = rand()%20;
+    // }
+    // print_vector(a2);
+    // std::cout << "sorted:" << '\n';
+    // print_vector(msort(a2));
+    //
+    // std::cout << "QUICK SORT EXAMPLE" << '\n';
+    // std::vector<int> a3(10);
+    // int k;
+    // for (k=0;k<size; k++){
+    //   a3[k] = rand()%20;
+    // }
+    // print_vector(a3);
+    // std::cout << "sorted:" << '\n';
+    // print_vector(qsort(a3));
+    //
+    // std::cout << "QUICK SORT IN PLACE EXAMPLE" << '\n';
+    // std::vector<int> a4(10);
+    // int l;
+    // for (l=0;l<size; l++){
+    //   a4[l] = rand()%20;
+    // }
+    // print_vector(a4);
+    // std::cout << "sorted:" << '\n';
+    // qsort2(a4, 0, (a4.size()-1));
+    // print_vector(a4);
 
     return 0;
   }
