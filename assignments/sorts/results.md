@@ -51,12 +51,46 @@ Time: 44781
 ## Quick Sort - *Basic and Smart Pivot*
 #### Time Complexity: O(n*log(n))
 ```c
+./sorts -m 20 -s 1000 -a q
+Starting the sort!
+Algorithm: q
+Time: 9
+```
 
+```c
+./sorts -m 20 -s 10000 -a q
+Starting the sort!
+Algorithm: q
+Time: 472
+```
+
+```c
+./sorts -m 20 -s 100000 -a q
+Starting the sort!
+Algorithm: q
+Time: 61917
 ```
 ## Quick Sort - *In-Place and Basic Pivot*
 #### Time Complexity: O(n*log(n))
 ```c
+./sorts -m 20 -s 1000 -a i
+Starting the sort!
+Algorithm: i
+Time: 1
+```
 
+```c
+./sorts -m 20 -s 10000 -a i
+Starting the sort!
+Algorithm: i
+Time: 3
+```
+
+```c
+./sorts -m 20 -s 100000 -a i
+Starting the sort!
+Algorithm: i
+Time: 24
 ```
 ## Quick Sort - *In-Place and Smart Pivot*
 #### Time Complexity: O(n*log(n))
@@ -84,6 +118,6 @@ Time: 24
 ### Table Comparison
 | Size        | Merge Sort Time | Quick Sort (Basic) Time | Quick Sort (Good Pivot) Time | In-Place Quick Sort (Basic Pivot) Time | In-Place Quick Sort (Good Pivot) Time |
 | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
-| 1,000      | 8       | 9       | Title       | Title       | 1       |
-| 10,000   | 77        | 445        | Text        | Text        | 3        |
-| 100,000   | 851        | 44781        | Text        | Text        | 29        |
+| 1,000      | 8       | 9       | 9       | 1       | 1       |
+| 10,000   | 77        | 445        | 472        | 2        | 3        |
+| 100,000   | 851        | 44781        | 61917        | 26        | 29        |
