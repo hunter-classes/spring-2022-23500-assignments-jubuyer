@@ -171,25 +171,25 @@ std::vector<int> qsort (std::vector<int> list) {
 
 void qsort2(std::vector<int>& list, int low, int high) {
   int middle = low + (high - low) / 2;
-  //int pivot;
-  int pivot = list[low];
+  int pivot;
+  //int pivot = list[low];
   //explained by my boy ivan
-  // if (list[low] > list[middle]){
-  //   if (list[low] < list[high])
-  //     pivot = list[low];
-  //   else if (list[middle] > list[high])
-  //     pivot = list[middle];
-  //   else
-  //     pivot = list[high];
-  // }
-  // else{
-  //   if (list[high] > list[middle])
-  //     pivot = list[middle];
-  //   else if (list[low] > list[high])
-  //     pivot = list[low];
-  //   else
-  //     pivot = list[high];
-  // }
+  if (list[low] > list[middle]){
+    if (list[low] < list[high])
+      pivot = list[low];
+    else if (list[middle] > list[high])
+      pivot = list[middle];
+    else
+      pivot = list[high];
+  }
+  else{
+    if (list[high] > list[middle])
+      pivot = list[middle];
+    else if (list[low] > list[high])
+      pivot = list[low];
+    else
+      pivot = list[high];
+  }
 
   int i = low, j = high;
   int temp;
