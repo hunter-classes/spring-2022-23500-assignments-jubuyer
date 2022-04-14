@@ -13,5 +13,6 @@ public:
   std::string toString();
   void locate(int location, std::string data);
   void remove(int location);
+  std::string getHead();
   ~List();
 };

@@ -94,6 +94,11 @@ void List::remove(int location) {
   return;
 }
 
+std::string List::getHead() {
+  return head->getData();
+}
+
+
 List::~List() {
   Node *walker = head;
   while(walker != nullptr) {
