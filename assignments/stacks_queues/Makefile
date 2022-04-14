@@ -4,28 +4,19 @@
 CC = g++
 CFLAGS  = -std=c++11 #-Wall
 
-main: main.o ONode.o OList.o
+main: main.o Stack.o List.o Node.o
 	$(CC) $(CFLAGS) -o $@ $^
 
-main.o: main.cpp Node.h
+main.o: main.cpp Stack.h
 	$(CC) $(CFLAGS) -c $<
 
-tests: tests.o ONode.o OList.o
+tests: tests.o Stack.o
 	$(CC) $(CFLAGS) -o $@ $^
 
 tests.o: tests.cpp doctest.h
 	$(CC) $(CFLAGS) -c $<
 
-listTest: listTesting.o Node.o List.o
-	$(CC) $(CFLAGS) -o $@ $^
-
-listTesting.o: listTesting.cpp List.h Node.h
-	$(CC) $(CFLAGS) -c $<
-
-OList.o: OList.cpp OList.h ONode.h
-	$(CC) $(CFLAGS) -c $<
-
-ONode.o: ONode.cpp ONode.h
+Stack.o: Stack.cpp Stack.h List.h
 	$(CC) $(CFLAGS) -c $<
 
 List.o: List.cpp List.h Node.h
