@@ -24,7 +24,7 @@ std::string Stack::pop() {
 }
 
 std::string Stack::top() {
-	if(length < 0) {
+	if(length == 0) {
 		throw STACK_ERR_EMPTY;
 	}
 
@@ -40,6 +40,9 @@ bool Stack::is_empty() {
 }
 
 std::string Stack::toString() {
+	if(length == 0) {
+		return "Stack is Empty";
+	}
 	return stack->toString();
 }
 
