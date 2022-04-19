@@ -31,5 +31,8 @@ int main(int argc, char const *argv[])
 		std::cout << "ERR " << e << ": Empty stack\n";
 	}
 
+	std::cout << "Testing Destructor:" << '\n';
+	delete s1;
+
 
 }
