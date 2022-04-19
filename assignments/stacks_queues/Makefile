@@ -10,7 +10,7 @@ main: main.o Stack.o List.o Node.o
 main.o: main.cpp Stack.h
 	$(CC) $(CFLAGS) -c $<
 
-tests: tests.o Stack.o
+tests: tests.o Stack.o List.o Node.o
 	$(CC) $(CFLAGS) -o $@ $^
 
 tests.o: tests.cpp doctest.h
