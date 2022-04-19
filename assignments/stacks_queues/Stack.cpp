@@ -1,10 +1,10 @@
 #include <iostream>
 
 #include "Stack.h"
-#include "List.h"
 
 Stack::Stack() {
-	List *stack = new List();
+	// List *stack = new List();
+	length = 0;
 }
 
 void Stack::push(std::string data) {
@@ -13,7 +13,7 @@ void Stack::push(std::string data) {
 }
 
 std::string Stack::pop() {
-	if(length < 0) {
+	if(length == 0) {
 		throw STACK_ERR_EMPTY;
 	}
 	std::string out = stack->getHead();

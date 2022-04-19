@@ -9,8 +9,8 @@
 
 class Stack{
 private:
-  List *stack;
-  int length = 0;
+  List *stack = new List();
+  int length;
 
 public:
   Stack();
