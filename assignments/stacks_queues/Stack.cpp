@@ -8,6 +8,10 @@ Stack::Stack() {
 }
 
 void Stack::push(std::string data) {
+	if(length > 999999) {
+		throw STACK_ERR_FULL;
+	}
+
 	stack->insert(data);
 	length++;
 }
