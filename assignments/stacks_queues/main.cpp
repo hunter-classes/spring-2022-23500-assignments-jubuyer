@@ -12,6 +12,7 @@ int main(int argc, char const *argv[])
 	s1->push("b");
 	s1->push("c");
 
+	std::cout << "\nTop of the stack is: " << s1->top() << '\n';
 	std::cout << s1->toString() << "\n\n";
 
 	s1->pop();
@@ -23,6 +24,7 @@ int main(int argc, char const *argv[])
 
 	std::cout << s1->toString() << "\n\n";
 
+	std::cout << "Testing Exceptions:" << '\n';
 	try {
 		s1->pop();
 	} catch (int e) {
