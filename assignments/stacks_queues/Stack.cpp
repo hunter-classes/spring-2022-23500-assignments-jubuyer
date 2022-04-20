@@ -3,7 +3,7 @@
 #include "Stack.h"
 
 Stack::Stack() {
-	// List *stack = new List();
+	stack = new List();
 	length = 0;
 }
 

@@ -9,7 +9,7 @@
 
 class Stack{
 private:
-  List *stack = new List();
+  List *stack;
   int length;
 
 public:
