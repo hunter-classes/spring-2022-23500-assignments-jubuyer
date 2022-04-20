@@ -64,5 +64,10 @@ int main(int argc, char const *argv[])
 	q1->dequeue();
 	q1->enqueue(21);
 	std::cout << q1->toString();
+	q1->dequeue();
+	q1->dequeue();
+	q1->enqueue(13);
+	std::cout << q1->toString();
+	std::cout << q1->parts();
 
 }

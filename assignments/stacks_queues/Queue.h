@@ -21,5 +21,6 @@ public:
   std::string toString();
   bool is_empty();
   bool is_full();
+  std::string parts();
   ~Queue();
 };

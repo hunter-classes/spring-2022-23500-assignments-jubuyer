@@ -92,3 +92,13 @@ bool Queue::is_full() {
 Queue::~Queue() {
   delete[] queue;
 }
+
+std::string Queue::parts() {
+  std::string s = "head: ";
+  s += std::to_string(this->head);
+  s += "\ntail: ";
+  s += std::to_string(this->tail);
+  s += "\n";
+
+  return s;
+}
