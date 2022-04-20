@@ -4,19 +4,22 @@
 CC = g++
 CFLAGS  = -std=c++11 #-Wall
 
-main: main.o Stack.o List.o Node.o
+main: main.o Queue.o Stack.o List.o Node.o
 	$(CC) $(CFLAGS) -o $@ $^
 
 main.o: main.cpp Stack.h
 	$(CC) $(CFLAGS) -c $<
 
-tests: tests.o Stack.o List.o Node.o
+tests: tests.o Queue.o Stack.o List.o Node.o
 	$(CC) $(CFLAGS) -o $@ $^
 
 tests.o: tests.cpp doctest.h
 	$(CC) $(CFLAGS) -c $<
 
 Stack.o: Stack.cpp Stack.h List.h
+	$(CC) $(CFLAGS) -c $<
+
+Queue.o: Queue.cpp Queue.h
 	$(CC) $(CFLAGS) -c $<
 
 List.o: List.cpp List.h Node.h
