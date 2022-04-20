@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "Stack.h"
+#include "Queue.h"
 
 int main(int argc, char const *argv[])
 {
@@ -34,5 +35,34 @@ int main(int argc, char const *argv[])
 	std::cout << "Testing Destructor:" << '\n';
 	delete s1;
 
+	std::cout << "Test Queue:" << '\n';
+	Queue *q1 = new Queue();
+	std::cout << q1->toString();
+	try {
+		q1->dequeue();
+	} catch (int e) {
+		std::cout << "ERR " << e << ": Empty queue\n";
+	}
+	q1->enqueue(1);
+	std::cout << q1->toString();
+	q1->enqueue(53);
+	q1->enqueue(12);
+	std::cout << q1->toString();
+	q1->dequeue();
+	std::cout << q1->toString();
+	q1->enqueue(21);
+	q1->enqueue(5122);
+	std::cout << q1->toString();
+	q1->enqueue(902);
+	std::cout << q1->toString();
+
+	try {
+		q1->enqueue(13);
+	} catch (int e) {
+		std::cout << "ERR " << e << ": Full queue\n";
+	}
+	q1->dequeue();
+	q1->enqueue(21);
+	std::cout << q1->toString();
 
 }
