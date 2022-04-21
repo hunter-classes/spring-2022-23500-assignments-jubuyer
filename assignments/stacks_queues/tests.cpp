@@ -4,7 +4,9 @@
 
 #include "doctest.h"
 #include "Stack.h"
+#include "Queue.h"
 
+// Stack Test Cases
 TEST_CASE("Push") {
   Stack *s1 = new Stack();
   s1->push("first");
@@ -64,4 +66,30 @@ TEST_CASE("is_empty") {
   CHECK(s1->is_empty() == false);
   Stack *s2 = new Stack();
   CHECK(s2->is_empty() == true);
+}
+
+// Queue Test Cases
+TEST_CASE("enqueue") {
+  Queue *q1 = new Queue();
+  try {
+    q1->dequeue();
+  } catch (int e) {
+    CHECK(e == 1);
+  }
+  q1->enqueue(1);
+  CHECK(q1->toString() == "1 --> end\n");
+  q1->enqueue(53);
+  CHECK(q1->toString() == "1 --> 53 --> end\n");
+  q1->enqueue(12);
+  CHECK(q1->toString() == "1 --> 53 --> 12 --> end\n");
+  q1->enqueue(412);
+  CHECK(q1->toString() == "1 --> 53 --> 12 --> 412 --> end\n");
+  q1->enqueue(91);
+  CHECK(q1->toString() == "1 --> 53 --> 12 --> 412 --> 91 --> end\n");
+  try {
+    q1->enqueue(12);
+  } catch (int e) {
+    CHECK(e == 2);
+  }
+
 }
