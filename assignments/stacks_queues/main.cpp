@@ -70,4 +70,29 @@ int main(int argc, char const *argv[])
 	std::cout << q1->toString();
 	std::cout << q1->parts();
 
+	std::cout << "WOWOWOWOWOW" << '\n';
+	Queue *q2 = new Queue();
+	q2->enqueue(12);
+	q2->enqueue(12);
+	q2->enqueue(12);
+	q2->enqueue(12);
+	q2->enqueue(12);
+	std::cout << q2->toString();
+	std::cout << q2->parts();
+	q2->dequeue();
+	q2->dequeue();
+	q2->dequeue();
+	q2->dequeue();
+	q2->dequeue();
+	std::cout << q2->toString();
+	std::cout << q2->parts();
+	q2->enqueue(12);
+	q2->enqueue(12);
+	std::cout << q2->toString();
+	std::cout << q2->parts();
+	q2->dequeue();
+	q2->dequeue();
+	std::cout << q2->toString();
+	std::cout << q2->parts();
+
 }
