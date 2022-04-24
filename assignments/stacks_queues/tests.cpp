@@ -169,7 +169,6 @@ TEST_CASE("is_empty && is_full") {
     CHECK(e == 2);
   }
   CHECK(q1->is_empty() == false);
-  q1->dequeue();
   CHECK(q1->is_full() == true);
 
 }

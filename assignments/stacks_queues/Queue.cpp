@@ -81,7 +81,7 @@ bool Queue::is_empty() {
 }
 
 bool Queue::is_full() {
- if(head == tail) {
+ if(head%5 == tail%5) {
    if(queued > 0) {
      return true;
    }
