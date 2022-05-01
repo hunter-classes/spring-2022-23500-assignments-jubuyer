@@ -8,15 +8,32 @@ int main()
   t->setup();
 
   std::cout <<  t->get_debug_string() << "\n";
-  int v = 15;
+  int v = 5;
 
-  
+
   try {
-    int x  = t->search(v);
+    int x  = t->rsearch(v);
     std::cout << "Found: " << x << "\n";
   } catch (int e){
     std::cout << v << " not found\n";
-    
+
+  }
+
+  v = 22;
+  try {
+    int x  = t->rsearch(v);
+    std::cout << "Found: " << x << "\n";
+  } catch (int e){
+    std::cout << v << " not found\n";
+
+  }
+  v = 8;
+  try {
+    int x  = t->rsearch(v);
+    std::cout << "Found: " << x << "\n";
+  } catch (int e){
+    std::cout << v << " not found\n";
+
   }
 
   t->insert(22);
@@ -24,7 +41,26 @@ int main()
   t->insert(3);
   std::cout <<  t->get_debug_string() << "\n";
 
+  v = 126;
+  try {
+    int x  = t->rsearch(v);
+    std::cout << "Found: " << x << "\n";
+  } catch (int e){
+    std::cout << v << " not found\n";
+
+  }
+
+  v = 22;
+  try {
+    int x  = t->rsearch(v);
+    std::cout << "Found: " << x << "\n";
+  } catch (int e){
+    std::cout << v << " not found\n";
+
+  }
+
+
   //   std::cout << t->treesum() << "\n";
-    
+
   return 0;
 }
