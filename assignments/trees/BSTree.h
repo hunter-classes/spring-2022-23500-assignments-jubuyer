@@ -1,4 +1,8 @@
 #pragma once
+
+#define TREE_ERR_NULL 1
+#define TREE_ERR_VALUE_DNE 2
+
 #include <iostream>
 #include <stdio.h>
 
@@ -14,16 +18,16 @@ public:
   void setup();
 
   std::string get_debug_string();
-  
+
 
   // std::string traverse(Node *n);
-  
+
   int search(int value);
   void insert(int value);
 
   // int treesum();
   // int treesum(Node *n);
-  // int searchr(int value);
-  // int searchr(int value, Node *n);
-  
+  int rsearch(int value);
+  int rsearch(int value, Node *n);
+
 };

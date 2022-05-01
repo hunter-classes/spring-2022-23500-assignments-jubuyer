@@ -2,7 +2,7 @@
 #include "Node.h"
 #include "BSTree.h"
 /*
- * 
+ *
  BST - Binary Search Tree
 
  ordered tree where it's either empty or given a node N, all the
@@ -24,7 +24,7 @@ BSTree::BSTree(){
 // O(n)
 std::string BSTree::traverse(Node *n){
   std::string a,b,c;
-  
+
   if (n==nullptr){
     return "";
   } else {
@@ -32,7 +32,7 @@ std::string BSTree::traverse(Node *n){
 
     /*
      *  pre-order traversal
-     
+
      1. process the node
      2. recurse to left subtree
      3. recurse to right subtree
@@ -47,14 +47,14 @@ std::string BSTree::traverse(Node *n){
      1. recurse to left subtree
      2. recurse to right subtree
      3. process the node
-      
+
      a =  traverse(n->getLeft());
      b =  traverse(n->getRight());
      c = std::to_string(n->getData());
 
     */
 
-    /*  
+    /*
 	in-order traversal
 
 	1. recurse left subtree
@@ -68,7 +68,7 @@ std::string BSTree::traverse(Node *n){
 
     return a + ", " + b+ ", " + c;
 
-     
+
   }
 };
 
@@ -91,7 +91,7 @@ void BSTree::setup(){
   n2->setLeft(n);
   n = new Node(8);
   n2->setRight(n);
-  
+
 }
 
 
@@ -112,7 +112,7 @@ int BSTree::search(int value){
     } else {
       t = t->getLeft();
     }
-    
+
   }
 
   // if we get here then the value isn't
@@ -125,8 +125,32 @@ int BSTree::search(int value){
 
   throw 1; // we should define our exceptions.
 
-    
-  
+
+
+}
+
+int BSTree::rsearch(int value) {
+  return rsearch(value, root);
+}
+
+int BSTree::rsearch(int value, Node *p) {
+  if(p == nullptr) {
+    throw TREE_ERR_NULL;
+  }
+
+  int pval = p->getData();
+  if(pval == value) {
+    return value;
+  }
+
+  if(pval > value) {
+    return rsearch(value, p->getLeft());
+  }
+  if(pval < value) {
+    return rsearch(value, p->getRight());
+  }
+
+  throw TREE_ERR_VALUE_DNE;
 }
 
 // we will always insert new nodes as leaves
@@ -134,7 +158,7 @@ void BSTree::insert(int value){
 
   // make a new node
   Node *newnode = new Node(value);
-  
+
   // search for where the node would go as a leaf
   // that is, search until we get to null
   // we can use the piggyback strategy of having
@@ -142,7 +166,7 @@ void BSTree::insert(int value){
   Node *p = root;
   Node *trailer;
 
-  
+
   while (p != nullptr) {
     // note that trailer is one level behind
     trailer = p;
@@ -151,12 +175,12 @@ void BSTree::insert(int value){
       return;
     }
     else if (p->getData() < value){
-      p = p->getRight(); 
+      p = p->getRight();
     } else {
       p = p->getLeft();
     }
   }
-  
+
   // handle the special case of the tree
   // being empty (null)
   if (root==nullptr){
