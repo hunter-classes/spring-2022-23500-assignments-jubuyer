@@ -36,12 +36,21 @@ int main()
 
   }
 
-  t->insert(22);
+  t->rinsert(22);
   std::cout <<  t->get_debug_string() << "\n";
   t->insert(3);
   std::cout <<  t->get_debug_string() << "\n";
 
   v = 126;
+  try {
+    int x  = t->rsearch(v);
+    std::cout << "Found: " << x << "\n";
+  } catch (int e){
+    std::cout << v << " not found\n";
+  }
+  t->rinsert(126);
+  std::cout <<  t->get_debug_string() << "\n";
+
   try {
     int x  = t->rsearch(v);
     std::cout << "Found: " << x << "\n";
