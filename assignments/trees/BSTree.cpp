@@ -198,3 +198,52 @@ void BSTree::insert(int value){
 
   }
 }
+
+void BSTree::rinsert(int value){
+  rinsert(value, root);
+}
+
+void BSTree::rinsert(int value, Node *p){
+  Node *newnode = new Node(value);
+
+  if(root==nullptr) {
+    p = newnode;
+  }
+
+  if (p->getData() == value){
+    return;
+  }
+
+  // if(p==nullptr && trailer != nullptr) {
+  //   if (trailer->getData() < value){
+  //     trailer->setRight(newnode);
+  //     return;
+  //   } else {
+  //     trailer->setLeft(newnode);
+  //     return;
+  //   }
+  // }
+  //
+  // trailer = p;
+
+  if(p->getData() > value) {
+    if(p->getLeft()==nullptr) {
+      p->setLeft(newnode);
+      return;
+    }
+  }
+  if(p->getData() < value) {
+    if(p->getRight()==nullptr) {
+      p->setRight(newnode);
+      return;
+    }
+  }
+
+
+  if(p->getData() > value) {
+    rinsert(value, p->getLeft());
+  }
+  if(p->getData() < value) {
+    rinsert(value, p->getRight());
+  }
+}

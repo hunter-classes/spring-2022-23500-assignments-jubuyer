@@ -8,7 +8,7 @@
 
 
 class BSTree{
- private:
+private:
   Node *root;
   std::string traverse(Node *n);
 
@@ -29,5 +29,9 @@ public:
   // int treesum(Node *n);
   int rsearch(int value);
   int rsearch(int value, Node *n);
+
+  void rinsert(int value);
+  void rinsert(int value, Node *p);
+
 
 };
