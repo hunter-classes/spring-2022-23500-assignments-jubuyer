@@ -4,8 +4,7 @@
 
 #include "doctest.h"
 #include "BSTree.h"
-#include "Node.h"
 
-// Tree Test Cases
 TEST_CASE("rsearch") {
+  CHECK("x" == "x");
 }
