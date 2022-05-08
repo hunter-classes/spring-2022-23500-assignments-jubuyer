@@ -67,9 +67,19 @@ int main()
     std::cout << v << " not found\n";
 
   }
-
-
   //   std::cout << t->treesum() << "\n";
+
+
+  //testing delete stuff
+  std::cout << "\n\n\n delete below \n" << '\n';
+  BSTree *tree = new BSTree();
+  tree->insert(8);
+  tree->insert(3);
+  tree->insert(4);
+  tree->insert(2);
+  std::cout <<  tree->get_debug_string() << "\n";
+  tree->deleteValue(2);
+  std::cout <<  tree->get_debug_string() << "\n";
 
   return 0;
 }

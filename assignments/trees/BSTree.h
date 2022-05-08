@@ -25,6 +25,8 @@ public:
   int search(int value);
   void insert(int value);
 
+  void deleteValue(int value);
+
   // int treesum();
   // int treesum(Node *n);
   int rsearch(int value);

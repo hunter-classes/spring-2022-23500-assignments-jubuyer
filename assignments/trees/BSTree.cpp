@@ -8,17 +8,11 @@
  ordered tree where it's either empty or given a node N, all the
  values in N's left subtree are less than the value in N and all the
  values in N's right subtree are greater than the value in N.
-
-
-
-
 */
+
 BSTree::BSTree(){
   root = nullptr;
 }
-
-
-
 
 // Traversal - visit every node in the tree
 // O(n)
@@ -93,7 +87,6 @@ void BSTree::setup(){
   n2->setRight(n);
 
 }
-
 
 int BSTree::search(int value){
   Node *t = root;
@@ -246,4 +239,44 @@ void BSTree::rinsert(int value, Node *p){
   if(p->getData() < value) {
     rinsert(value, p->getRight());
   }
+}
+
+
+// HW MAY 9
+void BSTree::deleteValue(int value) {
+  Node *p = root;
+  Node *trailer;
+
+  while (p != nullptr) {
+    trailer = p;
+
+    if(p->getData() == value) {
+      //if the node has no children (leaf)
+      if((p->getRight() == nullptr) && (p->getLeft() == nullptr)) {
+        //is p to the right or left of trailer? set that to nullptr
+        if(trailer->getRight() == p) {
+          trailer->setRight(nullptr);
+          std::cout << "deleteR" << '\n';
+          return;
+        } else {
+          trailer->setLeft(nullptr);
+          std::cout << "deleteL" << '\n';
+          return;
+        }
+      }
+      //if the node has one children
+
+      //if the node has 2 children
+
+    } else if (p->getData() < value){
+        p = p->getRight();
+      } else {
+        p = p->getLeft();
+      }
+
+      std::cout << "n: " << p->getData() << '\n';
+      std::cout <<  "t: " << trailer->getData() << '\n';
+  }
+
+  return;
 }
