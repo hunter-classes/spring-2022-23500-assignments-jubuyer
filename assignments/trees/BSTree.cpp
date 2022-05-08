@@ -248,7 +248,6 @@ void BSTree::deleteValue(int value) {
   Node *trailer;
 
   while (p != nullptr) {
-    trailer = p;
 
     if(p->getData() == value) {
       //if the node has no children (leaf)
@@ -256,26 +255,52 @@ void BSTree::deleteValue(int value) {
         //is p to the right or left of trailer? set that to nullptr
         if(trailer->getRight() == p) {
           trailer->setRight(nullptr);
-          std::cout << "deleteR" << '\n';
+          // std::cout << "deleteR" << '\n';
+          // std::cout <<  "t: " << trailer->getData() << '\n';
           return;
         } else {
           trailer->setLeft(nullptr);
-          std::cout << "deleteL" << '\n';
+          // std::cout << "deleteL" << '\n';
+          // std::cout <<  "t: " << trailer->getData() << '\n';
           return;
         }
       }
-      //if the node has one children
+      //if the node has one child
+      if((p->getRight() != nullptr) && (p->getLeft() == nullptr)) {
+        //does p have a child to the right only?
+        //is p to the right or left of trailer? set that to p's child
+        if(trailer->getRight() == p) {
+          trailer->setRight(p->getRight());
+          return;
+        } else {
+          trailer->setLeft(p->getRight());
+          return;
+        }
+      }
 
+      if((p->getRight() == nullptr) && (p->getLeft() != nullptr)) {
+        //does p have a child to the left only?
+        //is p to the right or left of trailer? set that to p's child
+        if(trailer->getRight() == p) {
+          trailer->setRight(p->getLeft());
+          return;
+        } else {
+          trailer->setLeft(p->getLeft());
+          return;
+        }
+      }
       //if the node has 2 children
 
     } else if (p->getData() < value){
+        trailer = p;
         p = p->getRight();
       } else {
+        trailer = p;
         p = p->getLeft();
       }
 
-      std::cout << "n: " << p->getData() << '\n';
-      std::cout <<  "t: " << trailer->getData() << '\n';
+      // std::cout << "n: " << p->getData() << '\n';
+      // std::cout <<  "t: " << trailer->getData() << '\n';
   }
 
   return;

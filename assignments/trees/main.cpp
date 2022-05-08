@@ -72,14 +72,33 @@ int main()
 
   //testing delete stuff
   std::cout << "\n\n\n delete below \n" << '\n';
+  std::cout << "no child test" << '\n';
   BSTree *tree = new BSTree();
   tree->insert(8);
   tree->insert(3);
   tree->insert(4);
   tree->insert(2);
   std::cout <<  tree->get_debug_string() << "\n";
+  tree->deleteValue(4);
+  std::cout <<  tree->get_debug_string() << "\n";
   tree->deleteValue(2);
   std::cout <<  tree->get_debug_string() << "\n";
 
+  std::cout << "one child test" << '\n';
+  BSTree *tree2 = new BSTree();
+  tree2->insert(8);
+  tree2->insert(3);
+  tree2->insert(9);
+  tree2->insert(4);
+  tree2->insert(2);
+  tree2->insert(1);
+  tree2->insert(12);
+  tree2->insert(10);
+  tree2->insert(13);
+
+
+  std::cout <<  tree2->get_debug_string() << "\n";
+  tree2->deleteValue(9);
+  std::cout <<  tree2->get_debug_string() << "\n";
   return 0;
 }
