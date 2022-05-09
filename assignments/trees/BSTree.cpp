@@ -290,7 +290,15 @@ void BSTree::deleteValue(int value) {
         }
       }
       //if the node has 2 children
-
+      if((p->getRight() != nullptr) && (p->getLeft() != nullptr)) {
+        Node *temp = p->getLeft();
+        while(temp->getRight() != nullptr) {
+          temp = temp->getRight();
+        }
+        int holder = temp->getData();
+        this->deleteValue(holder);
+        p->setData(holder);
+      }
     } else if (p->getData() < value){
         trailer = p;
         p = p->getRight();

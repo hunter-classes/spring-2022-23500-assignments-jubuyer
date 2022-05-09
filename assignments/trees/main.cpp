@@ -98,7 +98,7 @@ int main()
 
 
   std::cout <<  tree2->get_debug_string() << "\n";
-  tree2->deleteValue(9);
+  tree2->deleteValue(12);
   std::cout <<  tree2->get_debug_string() << "\n";
   return 0;
 }
