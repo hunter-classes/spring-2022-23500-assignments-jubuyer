@@ -10,13 +10,11 @@
  values in N's right subtree are greater than the value in N.
 */
 
-BSTree::BSTree(){
+BSTree::BSTree() {
   root = nullptr;
 }
 
-// Traversal - visit every node in the tree
-// O(n)
-std::string BSTree::traverse(Node *n){
+std::string BSTree::traverse(Node *n) {
   std::string a,b,c;
 
   if (n==nullptr){
@@ -46,6 +44,7 @@ std::string BSTree::traverse(Node *n){
      b =  traverse(n->getRight());
      c = std::to_string(n->getData());
 
+
     */
 
     /*
@@ -66,11 +65,11 @@ std::string BSTree::traverse(Node *n){
   }
 };
 
-std::string BSTree::get_debug_string(){
+std::string BSTree::get_debug_string() {
   return traverse(root);
 };
 
-void BSTree::setup(){
+void BSTree::setup() {
   Node *n = new Node(10);
   root = n;
   n = new Node(20);
@@ -88,7 +87,7 @@ void BSTree::setup(){
 
 }
 
-int BSTree::search(int value){
+int BSTree::search(int value) {
   Node *t = root;
 
   while (t != nullptr){
@@ -146,8 +145,7 @@ int BSTree::rsearch(int value, Node *p) {
   throw TREE_ERR_VALUE_DNE;
 }
 
-// we will always insert new nodes as leaves
-void BSTree::insert(int value){
+void BSTree::insert(int value) {
 
   // make a new node
   Node *newnode = new Node(value);
@@ -192,11 +190,11 @@ void BSTree::insert(int value){
   }
 }
 
-void BSTree::rinsert(int value){
+void BSTree::rinsert(int value) {
   rinsert(value, root);
 }
 
-void BSTree::rinsert(int value, Node *p){
+void BSTree::rinsert(int value, Node *p) {
   Node *newnode = new Node(value);
 
   if(root==nullptr) {
@@ -241,8 +239,58 @@ void BSTree::rinsert(int value, Node *p){
   }
 }
 
+int BSTree::countLeaves(Node *n) {
+  int leaves = 0;
+  Node *p = n;
 
-// HW MAY 9
+  if(p == nullptr) {
+    return leaves;
+  } else {
+    if (p->getRight() == nullptr && p->getLeft() == nullptr) {
+      leaves++;
+    }
+  }
+
+  leaves += countLeaves(p->getRight());
+  leaves += countLeaves(p->getLeft());
+
+  return leaves;
+}
+
+int BSTree::countLeaves() {
+  return this->countLeaves(root);
+}
+
+int BSTree::height(Node *n, int& current) {
+  Node *p = n;
+
+  if(root == nullptr) {
+    return 0;
+  }
+
+  if(p->getLeft() != nullptr || p->getRight() != nullptr) {
+    current++;
+    //std::cout << "\nplus" << '\n';
+  }
+
+  if (p->getLeft() != nullptr && p->getRight() != nullptr) {
+    height(p->getLeft(), current);
+    height(p->getRight(), current);
+  } else if (p->getLeft() != nullptr) {
+      height(p->getLeft(), current);
+    } else if (p->getRight() != nullptr) {
+        height(p->getRight(), current);
+      }
+
+  return current;
+}
+
+int BSTree::height() {
+  int counter = 0;
+  this->height(root, counter);
+  return counter;
+}
+
 void BSTree::deleteValue(int value) {
   Node *p = root;
   Node *trailer;

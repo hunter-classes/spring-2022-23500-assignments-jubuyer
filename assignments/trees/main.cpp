@@ -100,5 +100,19 @@ int main()
   std::cout <<  tree2->get_debug_string() << "\n";
   tree2->deleteValue(12);
   std::cout <<  tree2->get_debug_string() << "\n";
+
+  //testing other stuff
+  std::cout << "\n countLeaves below \n" << '\n';
+  BSTree *tree3 = new BSTree();
+  tree3->setup();
+  std::cout <<  tree3->get_debug_string() << "\n";
+  std::cout << "leaves of tree 3: " << tree3->countLeaves() << '\n';
+
+  std::cout << "\n height below \n" << '\n';
+  std::cout << "height of tree3: " << tree3->height() << '\n';
+  //tree2->insert(5);
+  std::cout << "height of tree2: " << tree2->height() << '\n';
+
+
   return 0;
 }

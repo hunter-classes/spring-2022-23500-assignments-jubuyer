@@ -26,6 +26,11 @@ public:
   void insert(int value);
 
   void deleteValue(int value);
+  int countLeaves();
+  int countLeaves(Node *n);
+
+  int height();
+  int height(Node *n, int& current);
 
   // int treesum();
   // int treesum(Node *n);
