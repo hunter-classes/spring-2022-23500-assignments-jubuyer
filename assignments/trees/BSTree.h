@@ -28,6 +28,7 @@ public:
   void deleteValue(int value);
   int countLeaves();
   int countLeaves(Node *n);
+  bool cousins(int dat1, int dat2);
 
   int height();
   int height(Node *n, int& current);

@@ -291,6 +291,51 @@ int BSTree::height() {
   return counter;
 }
 
+bool BSTree::cousins(int dat1, int dat2) {
+  Node *t = root;
+  bool found = false;
+  bool found2 = false;
+  int counter = 0;
+  int counter2 = 0;
+
+  while (t != nullptr && !found){
+    int tval = t->getData();
+    if (tval==dat1){
+      found = true;
+    }
+
+    counter++;
+    if (tval < dat1){
+      t = t->getRight();
+    } else {
+      t = t->getLeft();
+    }
+  }
+
+  t = root;
+  if(found) {
+    while (t != nullptr && !found2){
+      int tval = t->getData();
+      if (tval==dat2){
+        found2 = true;
+      }
+
+      counter2++;
+      if (tval < dat2){
+        t = t->getRight();
+      } else {
+        t = t->getLeft();
+      }
+    }
+  }
+
+  if(counter == counter2) {
+    return true;
+  }
+
+  return false;
+}
+
 void BSTree::deleteValue(int value) {
   Node *p = root;
   Node *trailer;

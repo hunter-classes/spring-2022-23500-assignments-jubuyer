@@ -113,6 +113,16 @@ int main()
   //tree2->insert(5);
   std::cout << "height of tree2: " << tree2->height() << '\n';
 
-
+  std::cout << "\n cousins below \n" << '\n';
+  if(tree3->cousins(3,15)) {
+    std::cout << "3 and 15 are cousins" << '\n';
+  } else {
+    std::cout << "3 and 15 arent cousins" << '\n';
+  }
+  if(tree3->cousins(5,15)) {
+    std::cout << "5 and 15 are cousins" << '\n';
+  } else {
+    std::cout << "5 and 15 arent cousins" << '\n';
+  }
   return 0;
 }
