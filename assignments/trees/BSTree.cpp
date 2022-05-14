@@ -286,7 +286,7 @@ int BSTree::height(Node *n, int& current) {
 }
 
 int BSTree::height() {
-  int counter = 0;
+  int counter = 1;
   this->height(root, counter);
   return counter;
 }

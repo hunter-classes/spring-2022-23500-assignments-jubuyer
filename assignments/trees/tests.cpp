@@ -110,5 +110,52 @@ TEST_CASE("delete") {
   CHECK(tree2->get_debug_string() == ", 1, , 4, , 8, , 9, , 10, ");
   tree2->deleteValue(312);
   CHECK(tree2->get_debug_string() == ", 1, , 4, , 8, , 9, , 10, ");
+}
 
+TEST_CASE("height") {
+  BSTree *tree2 = new BSTree();
+  tree2->insert(8);
+  tree2->insert(3);
+  CHECK(tree2->height() == 2);
+  tree2->insert(9);
+  tree2->insert(4);
+  CHECK(tree2->height() == 3);
+  tree2->insert(2);
+  tree2->insert(1);
+  CHECK(tree2->height() == 4);
+}
+
+TEST_CASE("countLeaves") {
+  BSTree *tree2 = new BSTree();
+  tree2->insert(8);
+  tree2->insert(3);
+  CHECK(tree2->countLeaves() == 1);
+  tree2->insert(9);
+  CHECK(tree2->countLeaves() == 2);
+  tree2->insert(4);
+  tree2->insert(2);
+  tree2->insert(1);
+  CHECK(tree2->countLeaves() == 3);
+  tree2->insert(12);
+  tree2->insert(10);
+  tree2->insert(13);
+  CHECK(tree2->countLeaves() == 4);
+}
+
+TEST_CASE("cousins?!") {
+  BSTree *tree2 = new BSTree();
+  tree2->insert(8);
+  tree2->insert(3);
+  tree2->insert(9);
+  tree2->insert(4);
+  tree2->insert(2);
+  tree2->insert(1);
+  tree2->insert(12);
+  tree2->insert(10);
+  tree2->insert(13);
+  CHECK(tree2->cousins(3,9));
+  CHECK(tree2->cousins(4,2));
+  CHECK(tree2->cousins(12,4));
+  CHECK(!tree2->cousins(9,1));
+  CHECK(tree2->cousins(2,12));
 }
