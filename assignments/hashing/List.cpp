@@ -109,6 +109,10 @@ void List::remove(int location) {
   return;
 }
 
+Node* List::getHead() {
+  return head;
+}
+
 List::~List() {
   Node *walker = head;
   while(walker != nullptr) {

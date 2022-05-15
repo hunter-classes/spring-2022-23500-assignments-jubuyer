@@ -15,7 +15,7 @@ tests.o: tests.cpp doctest.h
 Dictionary.o: Dictionary.cpp Dictionary.h
 	$(CC) $(CXXFLAGS) -c $<
 
-main.o: main.cpp List.h Node.h Person.h
+main.o: main.cpp Dictionary.h List.h Node.h Person.h
 	$(CC) $(CXXFLAGS) -c $<
 
 List.o: List.cpp List.h

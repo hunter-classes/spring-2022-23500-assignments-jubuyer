@@ -15,5 +15,6 @@ public:
   std::string toString();
   void locate(int location, std::string first, std::string last, int num);
   void remove(int location);
+  Node* getHead();
   ~List();
 };

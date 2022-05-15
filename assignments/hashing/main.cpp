@@ -2,6 +2,7 @@
 #include "Person.h"
 #include "Node.h"
 #include "List.h"
+#include "Dictionary.h"
 
 int main() {
   std::cout << "hashing Project 7" << '\n';
@@ -27,11 +28,52 @@ int main() {
 
   List *arr[5] = {};
   arr[0] = new List();
-  Person *test3 = new Person("professor", "jub", 1);
-  n->setData(test3);
+  Person *prof = new Person("professor", "jub", 1);
+  n->setData(prof);
   arr[0]->insert(n);
   std::cout << arr[0]->toString() << '\n';
 
-  
+  std::cout << "\n\x1B[31mtesting dictionary\033[0m" << '\n';
+  Dictionary *phonebook = new Dictionary();
+  Person *test3 = new Person("andres", "castillo", 4);
+  Person *test4 = new Person("johnny", "abshire", 5);
+  Person *test5 = new Person("princess", "peach", 6);
+  Person *test6 = new Person("mario", "figuero", 7);
+  Person *test7 = new Person("luigi", "figuero", 8);
+  Person *test8 = new Person("sir", "froggy", 9);
+  phonebook->enter(test3);
+  phonebook->enter(test4);
+  phonebook->enter(test5);
+  std::cout << phonebook->getKeys() << '\n';
+  phonebook->enter(test6);
+  phonebook->enter(test7);
+  phonebook->enter(test8);
+  std::cout << phonebook->getKeys() << '\n';
+  Person *test9 = new Person("Charles", "Xavier", 11);
+  Person *test10 = new Person("El", "Patron", 12);
+  Person *test11 = new Person("Don", "Toliver", 13);
+  Person *test12 = new Person("Mister", "P", 14);
+  Person *test13 = new Person("Miss", "P", 15);
+  Person *test14 = new Person("Jenny", "Blanc", 16);
+  Person *test15 = new Person("Willy", "Wonka", 17);
+  Person *test16 = new Person("Captain", "Pierce", 18);
+  Person *test17 = new Person("Jerry", "Mouse", 19);
+  Person *test18 = new Person("sir", "kitty", 10);
+
+  phonebook->enter(test9);
+  phonebook->enter(test10);
+  phonebook->enter(test11);
+  phonebook->enter(test12);
+  phonebook->enter(test13);
+  phonebook->enter(test14);
+  phonebook->enter(test15);
+  phonebook->enter(test16);
+  phonebook->enter(test17);
+  phonebook->enter(test18);
+  std::cout << "Phonebook: " << '\n';
+  std::cout << phonebook->getKeys() << '\n';
+
+
+
   return 0;
 }

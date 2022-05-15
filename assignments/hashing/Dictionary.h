@@ -5,16 +5,16 @@
 
 class Dictionary{
 private:
-  List *arr[10];
+  List *table[10];
 
 public:
   Dictionary();
 
   int hash(Person *p);
 
-  void insert(Person *data);
-  void insert(std::string first, std::string last, int num);
-  Person* getEntry(std::string first, std::string last);
+  void enter(Person *data);
+  void enter(std::string first, std::string last, int num);
+  Person* retrieve(std::string first, std::string last);
   std::string getKeys();
 
   ~Dictionary();
