@@ -11,9 +11,15 @@ Node::Node(Person *data, Node *next){
   this->next = next;
 }
 
+Node::Node(std::string first, std::string last, int num) {
+  Person *data = new Person(first, last, num);
+  this->data = data;
+}
+
 void Node::setData(Person *data){
   this->data = data;
 }
+
 
 void Node::setNext(Node *next){
   this->next = next;
@@ -21,6 +27,10 @@ void Node::setNext(Node *next){
 
 std::string Node::getData(){
   return this->data->get_name();
+}
+
+Person *Node::getPerson(){
+  return this->data;
 }
 
 Node *Node::getNext(){
