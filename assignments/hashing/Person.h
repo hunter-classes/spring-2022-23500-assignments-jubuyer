@@ -11,6 +11,8 @@ class Person{
   Person(std::string first, std::string last, int num);
   std::string get_name();
   int get_id();
-  
-  
+
+  std::string get_first();
+  std::string get_last();
+
 };

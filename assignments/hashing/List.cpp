@@ -17,6 +17,10 @@ void List::insert(std::string first, std::string last, int num){
   head = new_node;
 }
 
+void List::insert(Person *data) {
+  insert(data->get_first(), data->get_last(), data->get_id());
+}
+
 std::string List::toString(){
   std::string s = "";
   Node *walker = head;

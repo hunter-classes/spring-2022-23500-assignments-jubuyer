@@ -15,5 +15,12 @@ std::string Person::get_name(){
 
 int Person::get_id(){
   return idnum;
-  
+}
+
+std::string Person::get_first() {
+  return first;
+}
+
+std::string Person::get_last() {
+  return last;
 }
