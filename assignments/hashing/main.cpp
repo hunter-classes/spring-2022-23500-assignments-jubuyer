@@ -73,7 +73,19 @@ int main() {
   std::cout << "Phonebook: " << '\n';
   std::cout << phonebook->getKeys() << '\n';
 
+  std::cout << phonebook->retrieve("sir", "kitty")->get_name();
+  std::cout << " ID# " << phonebook->retrieve("sir", "kitty")->get_id() << '\n';
 
+  std::cout << phonebook->retrieve("johnny", "abshire")->get_name();
+  std::cout << " ID# " << phonebook->retrieve("johnny", "abshire")->get_id() << '\n';
 
+  std::cout << "trying to retrieve NONEXISTENT_ENTRY" << '\n';
+  try {
+    phonebook->retrieve("non", "existent");
+
+    std::cout << "this string will never reach the terminal" << '\n';
+  } catch (int e) {
+    std::cout << "Dictionary ERR: " << e << '\n';
+  }
   return 0;
 }

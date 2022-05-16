@@ -33,6 +33,7 @@ void Dictionary::enter(std::string first, std::string last, int num) {
 
 Person* Dictionary::retrieve(std::string first, std::string last) {
   Person *data = new Person(first, last, 0);
+  Person *out = nullptr;
   int search = hash(data);
 
   Node *walker = table[search]->getHead();
@@ -45,7 +46,9 @@ Person* Dictionary::retrieve(std::string first, std::string last) {
     walker = walker->getNext();
   }
 
-  Person *out = nullptr;
+  //if we are here, the person is not in the dictionary
+  throw NONEXISTENT_ENTRY;
+  
   return out;
 }
 

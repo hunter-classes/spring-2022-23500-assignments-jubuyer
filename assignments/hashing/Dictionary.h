@@ -1,5 +1,7 @@
 #pragma once
 
+#define NONEXISTENT_ENTRY 1
+
 #include <iostream>
 #include "List.h"
 
