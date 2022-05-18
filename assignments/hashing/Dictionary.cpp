@@ -48,7 +48,7 @@ Person* Dictionary::retrieve(std::string first, std::string last) {
 
   //if we are here, the person is not in the dictionary
   throw NONEXISTENT_ENTRY;
-  
+
   return out;
 }
 
